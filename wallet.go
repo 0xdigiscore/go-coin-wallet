@@ -19,6 +19,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/pkg/errors"
+	"github.com/qinghuan-chain/go-coin-wallet/gas"
 	chain "github.com/qinghuan-chain/go-coin-wallet/util"
 	"github.com/tyler-smith/go-bip39"
 )
@@ -443,13 +444,20 @@ func (w *Wallet) MethodFromPayload(abiStr string, payloadStr string) (*abi.Metho
 	return method, err
 }
 
-func (w *Wallet) SuggestGasPrice() (*big.Int, error) {
-	ctx, _ := context.WithTimeout(context.Background(), w.timeout)
-	gasPrice, err := w.RemoteRpcClient.SuggestGasPrice(ctx)
+func (w *Wallet) SuggestGasPrice() (*gas.EstimateGasPrice, error) {
+
+	estimateGasNow, err := gas.GetEstimateGasPrice()
 	if err != nil {
-		return nil, err
+		ctx, _ := context.WithTimeout(context.Background(), w.timeout)
+		gasPrice, err := w.RemoteRpcClient.SuggestGasPrice(ctx)
+		return &gas.EstimateGasPrice{
+			Standard: gasPrice,
+			Fast:     gasPrice,
+			Slow:     gasPrice,
+			Rapid:    gasPrice,
+		}, err
 	}
-	return gasPrice, nil
+	return estimateGasNow, nil
 }
 
 func (w *Wallet) Nonce(spenderAddressHex string) (uint64, error) {
