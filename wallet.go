@@ -458,6 +458,7 @@ func (w *Wallet) Nonce(spenderAddressHex string) (uint64, error) {
 	if err != nil {
 		return uint64(0), err
 	}
+
 	return nonce, nil
 }
 
