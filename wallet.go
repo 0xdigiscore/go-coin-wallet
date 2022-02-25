@@ -452,6 +452,15 @@ func (w *Wallet) SuggestGasPrice() (*big.Int, error) {
 	return gasPrice, nil
 }
 
+func (w *Wallet) Nonce(spenderAddressHex string) (uint64, error) {
+	ctx, _ := context.WithTimeout(context.Background(), w.timeout)
+	nonce, err := w.RemoteRpcClient.PendingNonceAt(ctx, common.HexToAddress(spenderAddressHex))
+	if err != nil {
+		return uint64(0), err
+	}
+	return nonce, nil
+}
+
 func (w *Wallet) LatestBlockNumber() (*big.Int, error) {
 	ctx, _ := context.WithTimeout(context.Background(), w.timeout)
 	number, err := w.RemoteRpcClient.BlockNumber(ctx)
