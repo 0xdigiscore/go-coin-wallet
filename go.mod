@@ -6,6 +6,7 @@ require (
 	github.com/btcsuite/btcd v0.20.1-beta
 	github.com/ethereum/go-ethereum v1.10.16
 	github.com/pefish/btcutil v1.0.4
+	github.com/pefish/go-reflect v0.2.2
 	github.com/pkg/errors v0.9.1
 	github.com/tyler-smith/go-bip39 v1.1.0
 )
