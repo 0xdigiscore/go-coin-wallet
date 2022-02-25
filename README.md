@@ -1,0 +1,1 @@
+# go-coin-wallet
