@@ -1,4 +1,4 @@
-module github.com/qinghuan-chain/go-coin-wallet
+module github.com/0xhelloweb3/go-coin-wallet
 
 go 1.17
 

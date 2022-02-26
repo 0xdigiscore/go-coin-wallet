@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"strings"
 
+	decimal "github.com/0xhelloweb3/go-coin-wallet/util"
 	go_reflect "github.com/pefish/go-reflect"
 	"github.com/pkg/errors"
-	decimal "github.com/qinghuan-chain/go-coin-wallet/util"
 )
 
 type DecimalClass struct {

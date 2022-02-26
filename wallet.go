@@ -9,6 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/0xhelloweb3/go-coin-wallet/gas"
+	chain "github.com/0xhelloweb3/go-coin-wallet/util"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -19,8 +21,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/pkg/errors"
-	"github.com/qinghuan-chain/go-coin-wallet/gas"
-	chain "github.com/qinghuan-chain/go-coin-wallet/util"
 	"github.com/tyler-smith/go-bip39"
 )
 

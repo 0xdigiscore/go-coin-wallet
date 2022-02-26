@@ -6,7 +6,7 @@ import (
 	"math/big"
 	"net/http"
 
-	"github.com/qinghuan-chain/go-coin-wallet/constants"
+	"github.com/0xhelloweb3/go-coin-wallet/constants"
 )
 
 type GasNowResult struct {
