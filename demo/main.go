@@ -9,10 +9,12 @@ import (
 )
 
 var (
+	// 测试网rpc 地址，主网切换 https://bsc-dataseed.binance.org
 	rpcUrl = "https://data-seed-prebsc-1-s1.binance.org:8545"
 
 	walletAddress = "0xB553803EE21b486BB86f2A63Bd682529Aa7FCE8D"
 
+	// 转账钱包私钥地址
 	privateKey = ""
 
 	// bsc 测试网 busd 合约地址
