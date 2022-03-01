@@ -33,6 +33,7 @@ func main() {
 	tokenDecimal, err := wallet.TokenDecimal(busdContractAddress, walletAddress)
 
 	fmt.Printf("busdBalance balance: %v, decimal: %v \n", busdBalance, tokenDecimal)
+
 	if err != nil {
 		fmt.Printf("get busdt balance error: %v\n", err)
 		return
