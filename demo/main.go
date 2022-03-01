@@ -28,9 +28,11 @@ func main() {
 	fmt.Printf("bnb balance: %v\n", balance)
 
 	// 获取 Erc20代币 余额
-	busdBalance, err := wallet.TokenBalance(busdContractAddress, walletAddress)
+	busdBalance, _ := wallet.TokenBalance(busdContractAddress, walletAddress)
 
-	fmt.Printf("busdBalance balance: %v\n", busdBalance)
+	tokenDecimal, err := wallet.TokenDecimal(busdContractAddress, walletAddress)
+
+	fmt.Printf("busdBalance balance: %v, decimal: %v \n", busdBalance, tokenDecimal)
 	if err != nil {
 		fmt.Printf("get busdt balance error: %v\n", err)
 		return
