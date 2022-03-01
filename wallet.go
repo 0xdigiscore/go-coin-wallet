@@ -945,38 +945,16 @@ func (w *Wallet) SignHashForMsg(data string) (string, error) {
 }
 
 // 获取decimal
-func (w *Wallet) TokenDecimal(contractAddress, address string) (*big.Int, error) {
-	result := new(big.Int)
+func (w *Wallet) TokenDecimal(contractAddress, address string) (uint8, error) {
+	result := uint8(0)
 	err := w.CallContractConstant(
 		&result,
 		contractAddress,
-		`[{
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      }
-    ],
-    "name": "decimal",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  }]`,
-		"decimal",
+		Erc20AbiStr,
+		"decimals",
 		nil,
-		common.HexToAddress(address),
 	)
-	if err != nil {
-		return nil, err
-	}
-	return result, nil
+	return uint8(result), err
 }
 
 func (w *Wallet) TokenBalance(contractAddress, address string) (*big.Int, error) {
