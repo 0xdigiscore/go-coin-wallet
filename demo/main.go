@@ -1,19 +1,3 @@
-# go-coin-wallet
-
-## 添加BSC 测试网络并领取测试币 
-
-获取 erc20 代币需要换个地址
-
-https://mirror.xyz/0xac8B5BF3e669DC1eD2D1596c2D261DA878816f40/icqx5vdBAVogJ4fbh06J4ELY5WvX10nOrmS0RsnXlhE
-
-## bsc 区块浏览器
-
-* 测试网： https://testnet.bscscan.com/
-* 主网: bscscan.com
-
-## 参考demo 目录
-
-```golang
 package main
 
 import (
@@ -86,6 +70,3 @@ func main() {
 		big.NewInt(17174691), big.NewInt(17174691), nil)
 	fmt.Printf("eventlogs: %v\n", eventlogs)
 }
-
-
-```

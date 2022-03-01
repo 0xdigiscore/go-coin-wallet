@@ -944,6 +944,41 @@ func (w *Wallet) SignHashForMsg(data string) (string, error) {
 	return hex.EncodeToString(crypto.Keccak256([]byte(msg))), nil
 }
 
+// 获取decimal
+func (w *Wallet) TokenDecimal(contractAddress, address string) (*big.Int, error) {
+	result := new(big.Int)
+	err := w.CallContractConstant(
+		&result,
+		contractAddress,
+		`[{
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "decimal",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }]`,
+		"decimal",
+		nil,
+		common.HexToAddress(address),
+	)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 func (w *Wallet) TokenBalance(contractAddress, address string) (*big.Int, error) {
 	result := new(big.Int)
 	err := w.CallContractConstant(
