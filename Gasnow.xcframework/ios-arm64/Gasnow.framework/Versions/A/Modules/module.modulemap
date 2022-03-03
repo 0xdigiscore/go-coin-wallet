@@ -1,0 +1,8 @@
+framework module "Gasnow" {
+	header "ref.h"
+    header "Gasnow.objc.h"
+    header "Universe.objc.h"
+    header "Gasnow.h"
+
+    export *
+}
