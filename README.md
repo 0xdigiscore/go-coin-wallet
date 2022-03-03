@@ -48,7 +48,6 @@ func main() {
 	busdBalance, _ := wallet.TokenBalance(busdContractAddress, walletAddress)
 
 	tokenDecimal, err := wallet.TokenDecimal(busdContractAddress, walletAddress)
-
 	fmt.Printf("busdBalance balance: %v, decimal: %v \n", busdBalance, tokenDecimal)
 
 	if err != nil {
@@ -90,5 +89,4 @@ func main() {
 		big.NewInt(17174691), big.NewInt(17174691), nil)
 	fmt.Printf("eventlogs: %v\n", eventlogs)
 }
-
 ```
