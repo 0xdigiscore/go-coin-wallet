@@ -8,21 +8,22 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 )
 
-func (e *EthChain) TransactionByHash(txHash string) (*TransactionByHashResult, bool, error) {
+func (e *EthChain) TransactionByHash(txHash string) (*TransactionByHashResult, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), e.timeout)
 	defer cancel()
 	tx, isPending, err := e.RemoteRpcClient.TransactionByHash(ctx, common.HexToHash(txHash))
 	if err != nil {
-		return nil, false, err
+		return nil, err
 	}
 	msg, err := tx.AsMessage(types.NewEIP155Signer(e.chainId), nil)
 	if err != nil {
-		return nil, false, err
+		return nil, err
 	}
 	return &TransactionByHashResult{
 		tx,
 		msg.From(),
-	}, isPending, nil
+		isPending,
+	}, nil
 }
 
 func (e *EthChain) TransactionReceiptByHash(txHash string) (*types.Receipt, error) {
@@ -38,12 +39,12 @@ func (e *EthChain) TransactionReceiptByHash(txHash string) (*types.Receipt, erro
 func (e *EthChain) WaitConfirm(txHash string, interval time.Duration) *types.Receipt {
 	timer := time.NewTimer(0)
 	for range timer.C {
-		_, isPending, err := e.TransactionByHash(txHash)
+		transRes, err := e.TransactionByHash(txHash)
 		if err != nil {
 			timer.Reset(interval)
 			continue
 		}
-		if isPending {
+		if transRes.IsPending {
 			timer.Reset(interval)
 			continue
 		}

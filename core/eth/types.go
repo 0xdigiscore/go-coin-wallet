@@ -28,7 +28,8 @@ type BuildTxResult struct {
 
 type TransactionByHashResult struct {
 	*types.Transaction
-	From common.Address
+	From      common.Address
+	IsPending bool
 }
 
 type Transaction struct {
