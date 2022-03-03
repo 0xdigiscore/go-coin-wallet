@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	coin "github.com/0xhelloweb3/go-coin-wallet"
+	coin "github.com/0xhelloweb3/go-coin-wallet/eth"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -35,9 +35,10 @@ var (
 	busdContractAddress = "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee"
 )
 
+
 func main() {
-	wallet := coin.NewWallet()
-	wallet.InitRemote(coin.UrlParam{RpcUrl: rpcUrl})
+	wallet := coin.NewEthChain()
+	wallet.InitRemote(rpcUrl)
 
 	// 获取主网代币 BNB 余额
 	balance, _ := wallet.Balance(walletAddress)
@@ -45,8 +46,8 @@ func main() {
 
 	// 获取 Erc20代币 余额
 	busdBalance, _ := wallet.TokenBalance(busdContractAddress, walletAddress)
-    
-    tokenDecimal, err := wallet.TokenDecimal(busdContractAddress, walletAddress)
+
+	tokenDecimal, err := wallet.TokenDecimal(busdContractAddress, walletAddress)
 
 	fmt.Printf("busdBalance balance: %v, decimal: %v \n", busdBalance, tokenDecimal)
 
@@ -89,6 +90,5 @@ func main() {
 		big.NewInt(17174691), big.NewInt(17174691), nil)
 	fmt.Printf("eventlogs: %v\n", eventlogs)
 }
-
 
 ```

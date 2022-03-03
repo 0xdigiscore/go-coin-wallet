@@ -3,6 +3,7 @@ module github.com/0xhelloweb3/go-coin-wallet
 go 1.17
 
 require (
+	github.com/0xblocks/flashbots-bundle v0.1.4
 	github.com/btcsuite/btcd v0.20.1-beta
 	github.com/ethereum/go-ethereum v1.10.16
 	github.com/pefish/btcutil v1.0.4

@@ -1,4 +1,4 @@
-package gas
+package gasnow
 
 import (
 	"encoding/json"

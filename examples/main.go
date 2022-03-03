@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	"math/big"
+	"os"
 
-	coin "github.com/0xhelloweb3/go-coin-wallet"
+	coin "github.com/0xhelloweb3/go-coin-wallet/core/eth"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -15,14 +16,14 @@ var (
 	walletAddress = "0xB553803EE21b486BB86f2A63Bd682529Aa7FCE8D"
 
 	// 转账钱包私钥地址
-	privateKey = ""
+	privateKey = os.Getenv("privateKeyHex")
 
 	// bsc 测试网 busd 合约地址
 	busdContractAddress = "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee"
 )
 
 func main() {
-	wallet := coin.NewWallet()
+	wallet := coin.NewEthChain()
 	wallet.InitRemote(coin.UrlParam{RpcUrl: rpcUrl})
 
 	// 获取主网代币 BNB 余额
