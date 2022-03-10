@@ -27,7 +27,7 @@ type BuildTxResult struct {
 }
 
 type TransactionByHashResult struct {
-	*types.Transaction
+	SignedTx  *types.Transaction
 	From      common.Address
 	IsPending bool
 }
