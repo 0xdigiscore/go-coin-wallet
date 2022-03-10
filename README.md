@@ -84,7 +84,7 @@ func main() {
 	// 打印交易hash
 	fmt.Printf("sendTxResult: %v\n", sendTxResult)
 
-	// 检测 transfer 事件， fromBlock 和 toBlock 参数可以不传，默认为最新区块，相等则检查特定区块
+	// 检测 transfer 事件， fromBlock 和 toBlock 参数可以不传
 	eventlogs, _ := wallet.FindLogs(busdContractAddress, coin.Erc20AbiStr, "Transfer",
 		big.NewInt(17174691), big.NewInt(17174691), nil)
 	fmt.Printf("eventlogs: %v\n", eventlogs)
